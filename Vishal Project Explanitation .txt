@@ -1,0 +1,42 @@
+Project: On-Premises SQL Server to Snowflake Cloud Migration
+
+In my previous project, I worked on migrating an on-premises SQL Server data warehouse to Snowflake to improve scalability, reduce infrastructure maintenance, and optimize analytical workloads.
+
+Architecture: SQL Server → Matillion → Amazon S3 staging (if required) → Snowflake RAW → STAGING → MART.
+
+My responsibilities included:
+
+1. Assessment: Analyzed existing SQL Server databases, tables, stored procedures, views, dependencies, data volumes, and business transformation logic.
+2. Schema migration: Converted SQL Server data types, DDL, functions, and stored procedure logic into Snowflake-compatible SQL. We reviewed differences such as "IDENTITY", temporary tables, date functions, and T-SQL-specific syntax.
+3. Data extraction and loading: Configured Matillion ETL orchestration jobs to extract data from SQL Server and load it into Snowflake. For large historical datasets, we used parallelized extraction and bulk loading through staged files in Amazon S3 where appropriate.
+4. Transformation: Built Matillion transformation jobs and Snowflake SQL transformations to cleanse, standardize, deduplicate, and apply business rules across RAW, STAGING, and MART layers.
+5. Incremental loading: Implemented watermark-based extraction using modified timestamps or business keys, along with suitable merge logic to handle inserts and updates.
+6. Validation: Compared source and target row counts, key aggregates, null counts, duplicate records, and business-critical measures. Captured load status and failures in audit tables.
+7. Scheduling and recovery: Orchestrated dependent jobs, configured failure handling, and ensured that failed loads could be rerun safely without creating duplicate data.
+8. Performance optimization: Tuned SQL, used appropriate warehouse sizes, monitored query profiles, and optimized bulk loading and transformation workloads.
+
+Outcome: We migrated the data warehouse to Snowflake with a repeatable ETL process, improved workload scalability, and reduced the operational overhead associated with managing on-premises infrastructure.
+
+
+
+Some of you can replace Matillion with Python/Glue/ADF /Fivetran etc.
+
+
+Project: Enterprise SQL Server to Snowflake Modernization
+
+I was involved in designing the migration of an on-premises SQL Server data warehouse to Snowflake, with the objective of modernizing the data platform, improving scalability, and simplifying data operations.
+
+Architecture: SQL Server → Matillion → S3 staging, where required → Snowflake RAW → STAGING → MART.
+
+My architectural responsibilities included:
+
+1. Source assessment and migration strategy: Classified workloads by data volume, complexity, dependencies, and business criticality. Defined the migration waves and selected full-load versus incremental-load strategies.
+2. Target architecture: Designed Snowflake databases, schemas, data layers, naming standards, and workload separation for ingestion, transformation, and reporting.
+3. ETL architecture: Selected Matillion as the orchestration and integration layer. Defined reusable job patterns, metadata-driven ingestion where appropriate, parameterization, and environment-specific configurations.
+4. Data migration strategy: Designed parallel historical backfills, incremental extraction, restartable loads, and reconciliation controls. For high-volume datasets, used staged bulk loading instead of row-by-row inserts.
+5. Transformation modernization: Evaluated existing T-SQL procedures and moved suitable transformation logic into Snowflake SQL and Matillion transformation jobs. Identified opportunities to simplify legacy logic and eliminate unnecessary intermediate processing.
+6. Security and governance: Designed role-based access control, least-privilege access, secure connectivity, and appropriate handling of sensitive data.
+7. Performance and cost: Defined warehouse sizing and workload isolation strategies, and used query profiling, warehouse monitoring, and resource monitors to control performance and cost.
+8. Cutover and risk management: Established reconciliation criteria, parallel-run validation, rollback considerations, dependency checks, and production cutover planning.
+
+Outcome: Established a scalable cloud data warehouse architecture with controlled migration, reliable data processing, and a foundation for future analytics workloads.
